@@ -5,7 +5,8 @@ from process import check, searches, truecaller_search, fb_search, logreturn, lo
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from creds import cred
 
-firebase = firebase.FirebaseApplication(cred.DB_URL)
+firebase_auth = firebase.FirebaseAuthentication(cred.DB_SECRET, cred.DB_MAIL)
+firebase = firebase.FirebaseApplication(cred.DB_URL, authentication=firebase_auth)
 app = Client(
     "KNOW-WHO-BOT",
     api_id=cred.API_ID,
