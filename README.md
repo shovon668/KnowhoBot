@@ -50,8 +50,11 @@ python3 main.py
 class cred():
     BOT_TOKEN = "your bot token from botfather"
     API_ID = "your api id from my.telegram.org!"       
-    API_HASH = "your api hash from my.telegram.org!"   
-    DB_URL = "your database url from google firebase"      
+    API_HASH = "your api hash from my.telegram.org!"
+    OWNER_ID = "owner id of the bot"   
+    DB_URL = "your database url from google firebase"
+    DB_SECRET = "your firebase db secret, get it from project settings -> service account -> database secrets"
+    DB_MAIL = "your firebase user email"      
     T_AUTH = "from telegram app request header"     
     E_AUTH = "from eyecon app request header"     
     E_AUTH_V= "from eyecon app request header"    
@@ -59,3 +62,14 @@ class cred():
     
 ```
 
+Firebase Realtime Database rules:
+
+```
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+
+```
