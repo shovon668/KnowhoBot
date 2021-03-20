@@ -61,12 +61,12 @@ def echo(client, message):
     pq = ""
     pro = client.send_message(chat_id=message.chat.id, text="Searching...", reply_to_message_id=message.message_id)
     r_num = message.text
-    num = r_num.replace("+91", "").replace(" ", "")
+    num = r_num.replace("+88", "").replace(" ", "")
     frbseyename = ""
     frbsefb = ""
     frbsetrname = ""
     frbsetrmail = ""
-    if num.isnumeric and len(num) == 10:
+    if num.isnumeric and len(num) == 11:
         pq = "\n\n**----••Truecaller says----**\n\nLimit exceeded ,try again tomorrow 🤦🏻‍♂️"
         tresponse = ""
         try:
@@ -169,7 +169,7 @@ def echo(client, message):
             firebase.put('/knowho-log', num, data)
 
     else:
-        pro.edit("`Only` **10** `digit numbers allowed` 🤦🏻‍♂️")
+        pro.edit("`Only` **11** `digit BD numbers are allowed` 🤦🏻‍♂️")
 
 
 app.run()
