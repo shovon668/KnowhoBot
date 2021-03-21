@@ -17,8 +17,20 @@
       "description": "Get this value from my.telegram.org! Please do not steal",
       "value": ""
     },
+    "OWNER_ID": {
+      "description": "Enter the id of bot owner",
+      "value": ""
+    },
     "DB_URL": {
       "description": "Your DATABASE url from firebase.google.com",
+      "value": ""
+    },
+    "DB_SECRET": {
+      "description": "Your DATABASE secret from firebase.google.com",
+      "value": ""
+    },
+    "DB_MAIL": {
+      "description": "Your firebase email address from firebase.google.com",
       "value": ""
     },
     "T_AUTH": {
