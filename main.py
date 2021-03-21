@@ -11,6 +11,8 @@ if path.exists("creds_local.py"):
 else:
     from creds import cred
 
+owner_id = int(cred.OWNER_ID)
+
 firebase_auth = firebase.FirebaseAuthentication(cred.DB_SECRET, cred.DB_MAIL)
 firebase = firebase.FirebaseApplication(cred.DB_URL, authentication=firebase_auth)
 app = Client(
@@ -20,8 +22,7 @@ app = Client(
     bot_token=cred.BOT_TOKEN
 )
 
-
-@app.on_message(filters.command(["start"]))
+@app.on_message(filters.command(["start"]) & filters.user(owner_id))
 def start(client, message):
     client.send_message(chat_id=message.chat.id,
                         text=f"`Hi` **{message.from_user.first_name}**\n `Enter the number to search...`",reply_markup=InlineKeyboardMarkup(
@@ -29,7 +30,7 @@ def start(client, message):
              InlineKeyboardButton("Source", callback_data="src")]]))
     check_status = check(message.chat.id)
 
-@app.on_callback_query()
+@app.on_callback_query(filters.user(owner_id))
 def newbt(client,callback_query):
     txt=callback_query.data
     if txt=="about":
@@ -41,7 +42,7 @@ def newbt(client,callback_query):
 
 
 
-@app.on_message(filters.command(["about"]))
+@app.on_message(filters.command(["about"]) & filters.user(owner_id))
 def about(client, message):
     client.send_message(chat_id=message.chat.id, reply_to_message_id=message.message_id,
                         text=f"`Bot`            : [knowhobot](t.me/knowhobot)\n`Creator :` [agentnova](t.me/agentnova)\n`Language:` [Python3](https://python.org)\n`Library :` [Pyrogram](https://docs.pyrogram.org/) \n`Server  :` [Heroku](https://herokuapp.com/)",
@@ -49,7 +50,7 @@ def about(client, message):
             [[InlineKeyboardButton("Feedback", url="t.me/agentnova")]]))
 
 
-@app.on_message(filters.command(["log"]))
+@app.on_message(filters.command(["log"]) & filters.user(owner_id))
 def stats(client, message):
     stat = client.send_message(chat_id=message.chat.id, reply_to_message_id=message.message_id,
                                text="`Fetching details`")
@@ -57,7 +58,7 @@ def stats(client, message):
     stat.edit(txt)
 
 
-@app.on_message(filters.text)
+@app.on_message(filters.text & filters.user(owner_id))
 def echo(client, message):
     actvt = ""
     actvt = firebase.get('/stats', 'total_searches')
