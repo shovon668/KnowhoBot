@@ -3,7 +3,13 @@ from pyrogram import Client, filters
 from firebase import firebase
 from process import check, searches, truecaller_search, fb_search, logreturn, log, eyecon_search
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from creds import cred
+import os.path
+from os import path
+
+if path.exists("creds_local.py"):
+    from creds_local import cred
+else:
+    from creds import cred
 
 firebase_auth = firebase.FirebaseAuthentication(cred.DB_SECRET, cred.DB_MAIL)
 firebase = firebase.FirebaseApplication(cred.DB_URL, authentication=firebase_auth)
