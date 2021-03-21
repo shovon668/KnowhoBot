@@ -32,9 +32,11 @@ Mozilla Public License for more details.
 #### The Legacy Way
 Simply clone the repository and run the main file:
 ```sh
-git clone https://github.com/agentnova/KnowhoBot.git
+git clone https://github.com/shovon668/KnowhoBot.git -b bd
 
 cd KnowhoBot
+
+cp creds_local.py.conf creds_local.py
 
 python3 -m venv venv
 
@@ -45,7 +47,7 @@ pip install -r requirements.txt
 python3 main.py
 
 ```
-#### Dont forget to edit the creds.py with your own variables like below with your own values
+#### Dont forget to edit the creds_local.py with your own variables like below with your own values
 ```python3
 class cred():
     BOT_TOKEN = "your bot token from botfather"
