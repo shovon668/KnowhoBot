@@ -6,7 +6,7 @@ Pluggable
 
 ## About the bot
 
->Simply the purpose of this bot is to gather information about a phone number(only indian numbers).
+>Simply the purpose of this bot is to gather information about a phone number(only BD numbers).
 
 >Combined Results from Truecaller and eyecon app is provided.
 
