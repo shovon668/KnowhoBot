@@ -44,7 +44,7 @@ def newbt(client,callback_query):
 
 @app.on_message(filters.command(["about"]) & filters.user(owner_id))
 def about(client, message):
-    client.send_message(chat_id=message.chat.id, reply_to_message_id=message.message_id,
+    client.send_message(chat_id=message.chat.id, reply_to_message_id=message.id,
                         text=f"`Bot`            : [knowhobot](t.me/knowhobot)\n`Creator :` [agentnova](t.me/agentnova)\n`Language:` [Python3](https://python.org)\n`Library :` [Pyrogram](https://docs.pyrogram.org/) \n`Server  :` [Heroku](https://herokuapp.com/)",
                         disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("Feedback", url="t.me/agentnova")]]))
@@ -52,7 +52,7 @@ def about(client, message):
 
 @app.on_message(filters.command(["log"]) & filters.user(owner_id))
 def stats(client, message):
-    stat = client.send_message(chat_id=message.chat.id, reply_to_message_id=message.message_id,
+    stat = client.send_message(chat_id=message.chat.id, reply_to_message_id=message.id,
                                text="`Fetching details`")
     txt = logreturn()
     stat.edit(txt)
@@ -67,7 +67,7 @@ def echo(client, message):
         firebase.put('/stats', 'total_searches', data)
     global pq
     pq = ""
-    pro = client.send_message(chat_id=message.chat.id, text="Searching...", reply_to_message_id=message.message_id)
+    pro = client.send_message(chat_id=message.chat.id, text="Searching...", reply_to_message_id=message.id)
     r_num = message.text
     num = r_num.replace("+88", "").replace(" ", "")
     frbseyename = ""
